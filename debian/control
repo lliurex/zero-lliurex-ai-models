@@ -1,0 +1,25 @@
+Source: zero-lliurex-ai-models
+Section: utils
+Priority: optional
+Maintainer: M.Angel Juan <m.angel.juan@gmail.com>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13), zero-dev, llxsrchelper, inkscape
+Standards-Version: 4.6.2
+Homepage: http://lliurex.net
+Vcs-Browser: https://github.com/lliurex/zero-lliurex-ai-models
+Vcs-Git: https://github.com/lliurex/zero-lliurex-ai-models
+
+Package: zero-lliurex-ai-models
+Architecture: any
+Multi-Arch: foreign
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ zero-center,
+ epi-gtk,
+ python3-aiohttp,
+ python3-tqdm
+Description: Installer for AI models
+ Easy installer for AI models on shared folder
+
