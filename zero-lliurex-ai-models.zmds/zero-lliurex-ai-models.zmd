@@ -1,0 +1,4 @@
+#!/bin/bash
+
+epi-gtk /usr/share/zero-lliurex-ai-models/ai-models.epi
+exit 0

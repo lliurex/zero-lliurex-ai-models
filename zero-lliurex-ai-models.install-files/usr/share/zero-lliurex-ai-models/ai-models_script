@@ -1,0 +1,30 @@
+#!/bin/bash
+
+PLUGIN_FORCE_TAG=v1.49.1
+AI_DIFFUSION_DOWNLOAD_URL=http://thinkpad.lan:8000
+DIFFSUSION_MODEL_DIR=/usr/lib/ai/diffusion_models
+THIS_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
+ACTION="$1"
+
+case $ACTION in
+    getStatus)
+	if [ -d "$DIFFUSION_MODEL_DIR/models/" ];then
+	    echo 0
+	else
+	    echo 1
+	fi
+    ;;
+    installPackage)
+	TMP=$(mktemp -d)
+	$THIS_PATH/get_latest_plugin.sh $TMP $PLUGIN_FORCE_TAG
+	echo Installing...
+	python3 $TMP/decompressed/ai_diffusion/download_models.py -m --flux2 --checkpoints $DIFFSUSION_MODEL_DIR
+	echo Installed!
+    ;;
+    download)
+	echo Download not needed!
+    ;;
+    remove)
+	echo Removing...
+    ;;	
+esac

@@ -1,0 +1,8 @@
+{
+    "type":"file",
+    "pkg_list": [ {"name": "diffusion-models","key_store":"zero-lliurex-ai-models","custom_name":"Diffusion AI models","custom_icon":"ai-models.png"}],
+    "script": {"name":"/usr/share/zero-lliurex-ai-models/ai-models_script","install": true, "remove": true, "getStatus": true,"download":true },
+    "custom_icon_path":"/usr/share/zero-lliurex-traduia/",
+    "zomando":"zero-lliurex-ai-models",
+    "check_zomando_state": false
+}
