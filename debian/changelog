@@ -1,3 +1,11 @@
+zero-lliurex-ai-models (0.2) jammy; urgency=medium
+
+  * Fix uninstallation
+  * Make selectable packages
+  * Include kdenlive models
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Wed, 06 May 2026 14:21:51 +0200
+
 zero-lliurex-ai-models (0.1) jammy; urgency=medium
 
   * Initial release
