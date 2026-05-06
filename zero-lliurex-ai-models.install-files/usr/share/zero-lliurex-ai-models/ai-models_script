@@ -41,6 +41,8 @@ case $ACTION in
 	elif [[ " ${PACKAGE_LIST[*]} " == *" kdenlive-models "* ]];then
 	    curl --create-dirs --output-dir $KDENLIVE_MODEL_DIR/sam2 -O "$SAM2_URL"
 	    curl --create-dirs --output-dir $KDENLIVE_MODEL_DIR/whisper -O "$WHISPER_URL"
+	    chmod 755 $KDENLIVE_MODEL_DIR
+	    chmod 755 $KDENLIVE_MODEL_DIR/{sam2,whisper}
 	else
 	    echo "Not Found"
 	fi
