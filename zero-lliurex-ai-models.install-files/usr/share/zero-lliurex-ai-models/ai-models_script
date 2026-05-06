@@ -2,29 +2,66 @@
 
 PLUGIN_FORCE_TAG=v1.49.1
 AI_DIFFUSION_DOWNLOAD_URL=http://thinkpad.lan:8000
-DIFFSUSION_MODEL_DIR=/usr/lib/ai/diffusion_models
+DIFFUSION_MODEL_DIR=/usr/lib/ai/diffusion_models
+KDENLIVE_MODEL_DIR=/usr/lib/ai/kdenlive_models
+WHISPER_URL="https://openaipublic.azureedge.net/main/whisper/models/aff26ae408abcba5fbf8813c21e62b0941638c5f6eebfb145be0c9839262a19a/large-v3-turbo.pt"
+SAM2_URL="https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_tiny.pt"
 THIS_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 ACTION="$1"
+shift
+PACKAGE_LIST=$@
 
 case $ACTION in
     getStatus)
-	if [ -d "$DIFFUSION_MODEL_DIR/models/" ];then
-	    echo 0
+	if [[ " ${PACKAGE_LIST[*]} " == *" diffusion-models "* ]];then
+	    if [ -d "$DIFFUSION_MODEL_DIR/models/" ];then
+		echo 0
+	    else
+		echo 1
+	    fi
+	elif [[ " ${PACKAGE_LIST[*]} " == *" kdenlive-models "* ]];then
+	    if [ -d "$KDENLIVE_MODEL_DIR" ];then
+		echo 0
+	    else
+		echo 1
+	    fi
+
 	else
-	    echo 1
+	    echo "Not Found"
 	fi
     ;;
     installPackage)
-	TMP=$(mktemp -d)
-	$THIS_PATH/get_latest_plugin.sh $TMP $PLUGIN_FORCE_TAG
-	echo Installing...
-	python3 $TMP/decompressed/ai_diffusion/download_models.py -m --flux2 --checkpoints $DIFFSUSION_MODEL_DIR
-	echo Installed!
+	if [[ " ${PACKAGE_LIST[*]} " == *" diffusion-models "* ]];then
+	    TMP=$(mktemp -d)
+	    $THIS_PATH/get_latest_plugin.sh $TMP $PLUGIN_FORCE_TAG
+	    echo Installing...
+	    python3 $TMP/decompressed/ai_diffusion/download_models.py -m --checkpoints $DIFFSUSION_MODEL_DIR
+	    echo Installed!
+	    rm -rf "$TMP"
+	elif [[ " ${PACKAGE_LIST[*]} " == *" kdenlive-models "* ]];then
+	    curl --create-dirs --output-dir $KDENLIVE_MODEL_DIR/sam2 -O "$SAM2_URL"
+	    curl --create-dirs --output-dir $KDENLIVE_MODEL_DIR/whisper -O "$WHISPER_URL"
+	else
+	    echo "Not Found"
+	fi
     ;;
     download)
 	echo Download not needed!
     ;;
     remove)
-	echo Removing...
+	if [[ " ${PACKAGE_LIST[*]} " == *" diffusion-models "* ]];then
+	    echo removing "'${PACKAGE_LIST[*]}'"
+	    if [ -d "$DIFFUSION_MODEL_DIR" ];then
+		rm -rf "$DIFFUSION_MODEL_DIR"
+	    fi
+	elif [[ " ${PACKAGE_LIST[*]} " == *" kdenlive-models "* ]];then
+	    echo removing "'${PACKAGE_LIST[*]}'"
+	    if [ -d "$KDENLIVE_MODEL_DIR" ];then
+		rm -rf "$KDENLIVE_MODEL_DIR"
+	    fi
+	else
+	    echo "Not Found"
+	fi
     ;;	
 esac
+exit 0
