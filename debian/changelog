@@ -1,3 +1,9 @@
+zero-lliurex-ai-models (0.2.2) jammy; urgency=medium
+
+  * Disable diffusion models (krita flatpak installer has models incorporated)
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Wed, 17 Jun 2026 11:05:25 +0200
+
 zero-lliurex-ai-models (0.2.1) jammy; urgency=medium
 
   * Remove sam2 on llx23
