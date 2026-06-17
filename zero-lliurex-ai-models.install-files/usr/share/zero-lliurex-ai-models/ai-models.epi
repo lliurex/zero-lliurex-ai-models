@@ -1,9 +1,26 @@
 {
-    "type":"mix",
-    "pkg_list": [{"name": "diffusion-models","key_store":"zero-lliurex-ai-models-diffusion","custom_name":"Diffusion AI models","custom_icon":"ai-models.png","type":"file"},{"name": "kdenlive-models","key_store":"zero-lliurex-ai-models-kdenlive","custom_name":"Kdenlive AI models","custom_icon":"ai-models.png","type":"file"}],
-    "script": {"name":"/usr/share/zero-lliurex-ai-models/ai-models_script","install": true, "remove": true, "getStatus": true,"download":true },
-    "custom_icon_path":"/usr/share/zero-lliurex-ai-models/",
-    "zomando":"zero-lliurex-ai-models",
-    "selection_enabled":{"active":true,"all_selected":false},
-    "check_zomando_state": false
+  "type": "mix",
+  "pkg_list": [
+    {
+      "name": "kdenlive-models",
+      "key_store": "zero-lliurex-ai-models-kdenlive",
+      "custom_name": "Kdenlive AI models",
+      "custom_icon": "ai-models.png",
+      "type": "file"
+    }
+  ],
+  "script": {
+    "name": "/usr/share/zero-lliurex-ai-models/ai-models_script",
+    "install": true,
+    "remove": true,
+    "getStatus": true,
+    "download": true
+  },
+  "custom_icon_path": "/usr/share/zero-lliurex-ai-models/",
+  "zomando": "zero-lliurex-ai-models",
+  "selection_enabled": {
+    "active": true,
+    "all_selected": false
+  },
+  "check_zomando_state": false
 }
