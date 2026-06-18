@@ -1,3 +1,9 @@
+zero-lliurex-ai-models (0.2.2) noble; urgency=medium
+
+  * Port from jammy
+
+ -- M.Angel Juan <lliurex@25dev>  Thu, 18 Jun 2026 13:43:00 +0200
+
 zero-lliurex-ai-models (0.2) noble; urgency=medium
 
   * Selectable packages
