@@ -11,6 +11,9 @@ ACTION="$1"
 shift
 PACKAGE_LIST=$@
 
+LLXRELEASE="$(lliurex-version -n |cut -c -2)"
+KLIVERELEASE="$(kdenlive -v 2>/dev/null|awk '{print $2}'|cut -c -2)"
+
 case $ACTION in
     getStatus)
 	if [[ " ${PACKAGE_LIST[*]} " == *" diffusion-models "* ]];then
@@ -39,10 +42,13 @@ case $ACTION in
 	    echo Installed!
 	    rm -rf "$TMP"
 	elif [[ " ${PACKAGE_LIST[*]} " == *" kdenlive-models "* ]];then
-	    curl --create-dirs --output-dir $KDENLIVE_MODEL_DIR/sam2 -O "$SAM2_URL"
+	    if [ "$LLXRELEASE" = "25" -o "KLIVERELEASE" = "25" ]; then
+		curl --create-dirs --output-dir $KDENLIVE_MODEL_DIR/sam2 -O "$SAM2_URL"
+		chmod 755 $KDENLIVE_MODEL_DIR/sam2
+	    fi
 	    curl --create-dirs --output-dir $KDENLIVE_MODEL_DIR/whisper -O "$WHISPER_URL"
 	    chmod 755 $KDENLIVE_MODEL_DIR
-	    chmod 755 $KDENLIVE_MODEL_DIR/{sam2,whisper}
+	    chmod 755 $KDENLIVE_MODEL_DIR/whisper
 	else
 	    echo "Not Found"
 	fi
