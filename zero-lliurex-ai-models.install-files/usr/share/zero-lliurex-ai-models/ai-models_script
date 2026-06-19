@@ -3,7 +3,8 @@
 PLUGIN_FORCE_TAG=v1.49.1
 AI_DIFFUSION_DOWNLOAD_URL=http://thinkpad.lan:8000
 DIFFUSION_MODEL_DIR=/opt/ai/krita/models
-KDENLIVE_MODEL_DIR=/opt/ai/kdenlive/kdenlive_models
+KDENLIVE_DIR=/opt/ai/kdenlive
+KDENLIVE_MODEL_DIR=$KDENLIVE_DIR/kdenlive_models
 WHISPER_URL="https://openaipublic.azureedge.net/main/whisper/models/aff26ae408abcba5fbf8813c21e62b0941638c5f6eebfb145be0c9839262a19a/large-v3-turbo.pt"
 SAM2_URL="https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_tiny.pt"
 THIS_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
@@ -47,7 +48,7 @@ case $ACTION in
 		chmod 755 $KDENLIVE_MODEL_DIR/sam2
 	    fi
 	    curl --create-dirs --output-dir $KDENLIVE_MODEL_DIR/whisper -O "$WHISPER_URL"
-	    find $KDENLIVE_MODEL_DIR -type d -exec chmod 755 {} \;
+	    find $KDENLIVE_DIR -type d -exec chmod 755 {} \;
 	else
 	    echo "Not Found"
 	fi
