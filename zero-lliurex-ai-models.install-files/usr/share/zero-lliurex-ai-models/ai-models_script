@@ -47,8 +47,7 @@ case $ACTION in
 		chmod 755 $KDENLIVE_MODEL_DIR/sam2
 	    fi
 	    curl --create-dirs --output-dir $KDENLIVE_MODEL_DIR/whisper -O "$WHISPER_URL"
-	    chmod 755 $KDENLIVE_MODEL_DIR
-	    chmod 755 $KDENLIVE_MODEL_DIR/whisper
+	    find $KDENLIVE_MODEL_DIR -type d -exec chmod 755 {} \;
 	else
 	    echo "Not Found"
 	fi
