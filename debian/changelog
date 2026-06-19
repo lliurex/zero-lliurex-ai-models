@@ -1,3 +1,9 @@
+zero-lliurex-ai-models (0.2.3) noble; urgency=medium
+
+  * Change model path
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Fri, 19 Jun 2026 13:11:15 +0200
+
 zero-lliurex-ai-models (0.2.2) noble; urgency=medium
 
   * Port from jammy
