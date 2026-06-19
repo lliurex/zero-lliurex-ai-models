@@ -1,3 +1,9 @@
+zero-lliurex-ai-models (0.2.3) jammy; urgency=medium
+
+  * Change model path 
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Fri, 19 Jun 2026 13:09:56 +0200
+
 zero-lliurex-ai-models (0.2.2) jammy; urgency=medium
 
   * Disable diffusion models (krita flatpak installer has models incorporated)
